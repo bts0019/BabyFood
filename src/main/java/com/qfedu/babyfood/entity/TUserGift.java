@@ -1,4 +1,4 @@
-package com.qfedu.babyfood.enity;
+package com.qfedu.babyfood.entity;
 
 import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;

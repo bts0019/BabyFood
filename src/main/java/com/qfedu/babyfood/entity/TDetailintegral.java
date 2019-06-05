@@ -1,4 +1,4 @@
-package com.qfedu.babyfood.enity;
+package com.qfedu.babyfood.entity;
 
 import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
