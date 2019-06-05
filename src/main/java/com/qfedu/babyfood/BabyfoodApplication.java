@@ -1,9 +1,13 @@
 package com.qfedu.babyfood;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@MapperScan("com.qfedu.babyfood.dao") //扫描Mybatis修饰的接口所在的包
 @SpringBootApplication
+@EnableSwagger2 //启用Swagger
 public class BabyfoodApplication {
 
     public static void main(String[] args) {
