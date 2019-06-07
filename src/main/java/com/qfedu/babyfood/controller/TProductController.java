@@ -1,4 +1,4 @@
-package com.qfedu.babyfood.comtroller;
+package com.qfedu.babyfood.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Controller;
  * @since 2019-06-05
  */
 @Controller
-@RequestMapping("/tBaby")
-public class TBabyController {
+@RequestMapping("/tProduct")
+public class TProductController {
 
 }
 
