@@ -7,8 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.imageio.ImageIO;
@@ -43,8 +42,10 @@ public class TUserController {
      * @param httpServletResponse
      * @throws Exception
      */
+    @CrossOrigin//允许跨域
     @ApiOperation(value = "生成验证码",notes = "这是一个生成验证码的方法")
     @RequestMapping(value = "user/defaultKaptcha",method = RequestMethod.GET)
+    @ResponseBody
     public void defaultKaptcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception{
         byte[] captchaChallengeAsJpeg = null;
         ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
@@ -73,22 +74,14 @@ public class TUserController {
         responseOutputStream.close();
     }
 
+    @CrossOrigin//允许跨域
     @ApiOperation(value = "检查验证码时候正确",notes = "这是一个实现新闻新增的方法，需要参数信息是用户的邮箱或者手机号和验证码")
     @RequestMapping(value = "user/imgvrifyControllerDefaultKaptcha",method = RequestMethod.POST)
+    @ResponseBody
     public R imgvrifyControllerDefaultKaptcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, String vrifyCode, String userLogin){
         ModelAndView andView = new ModelAndView();
         String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
-       // String vrifyCode = httpServletRequest.getParameter("vrifyCode");
-        System.out.println("Session  vrifyCode "+captchaId+" form vrifyCode "+vrifyCode);
 
-       /* if (!captchaId.equals(vrifyCode)) {
-            andView.addObject("info", "错误的验证码");
-            andView.setViewName("index");
-        } else {
-            andView.addObject("info", "登录成功");
-            andView.setViewName("succeed");
-
-        }*/
        return tUserService.checkCode(captchaId,vrifyCode,userLogin);
     }
 }

@@ -3,6 +3,8 @@ package com.qfedu.babyfood.dao;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.qfedu.babyfood.entity.TCity;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -12,5 +14,7 @@ import com.qfedu.babyfood.entity.TCity;
  * @since 2019-06-05
  */
 public interface TCityMapper extends BaseMapper<TCity> {
+
+    public List<TCity> selectByParentCityId(int parentCityId);
 
 }
