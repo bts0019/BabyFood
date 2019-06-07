@@ -1,5 +1,8 @@
 package com.qfedu.babyfood.entity;
 
+import com.baomidou.mybatisplus.enums.IdType;
+import java.util.Date;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
@@ -10,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author jesion
- * @since 2019-06-05
+ * @since 2019-06-06
  */
 @TableName("t_user")
 public class TUser extends Model<TUser> {
@@ -20,6 +23,7 @@ public class TUser extends Model<TUser> {
     /**
      * 用户id
      */
+    @TableId(value = "userId", type = IdType.AUTO)
     private Integer userId;
     /**
      * 用户名
@@ -69,6 +73,10 @@ public class TUser extends Model<TUser> {
      * 图片
      */
     private String image;
+    /**
+     * 点赞判断
+     */
+    private Date flagTime;
 
 
     public Integer getUserId() {
@@ -175,6 +183,14 @@ public class TUser extends Model<TUser> {
         this.image = image;
     }
 
+    public Date getFlagTime() {
+        return flagTime;
+    }
+
+    public void setFlagTime(Date flagTime) {
+        this.flagTime = flagTime;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.userId;
@@ -196,6 +212,7 @@ public class TUser extends Model<TUser> {
         ", integralId=" + integralId +
         ", role=" + role +
         ", image=" + image +
+        ", flagTime=" + flagTime +
         "}";
     }
 }
