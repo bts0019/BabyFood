@@ -13,4 +13,59 @@
         <result column="image" property="image" />
     </resultMap>
 
+    <insert id="insertBaby" parameterType="com.qfedu.babyfood.entity.TBaby">
+
+        <selectKey keyProperty="babyId" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+
+        insert into t_baby
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="babyId != null">
+                babyId,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="birth != null">
+                birth,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="pretty!= null">
+                pretty,
+            </if>
+            <if test="expectTime != null">
+                expectTime,
+            </if>
+            <if test="image != null">
+                image
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="babyId != null">
+                #{babyId},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="birth != null">
+                #{birth},
+            </if>
+            <if test="gender != null">
+                #{gender},
+            </if>
+            <if test="pretty!= null">
+                #{pretty},
+            </if>
+            <if test="expectTime != null">
+                #{expectTime},
+            </if>
+            <if test="image != null">
+                #{image}
+            </if>
+        </trim>
+    </insert>
+
 </mapper>

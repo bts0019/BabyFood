@@ -24,6 +24,9 @@
           select * from t_user where userId = #{userId}
     </select>
 
+    <select id="selectByemail" parameterType="string" resultMap="BaseResultMap">
+          select * from t_user where email=#{email}
+    </select>
     <insert id="insertIntegral" parameterType="com.qfedu.babyfood.entity.TDetailintegral">
 
         insert into t_detailintegral values

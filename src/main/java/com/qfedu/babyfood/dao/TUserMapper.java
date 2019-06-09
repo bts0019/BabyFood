@@ -19,4 +19,6 @@ public interface TUserMapper extends BaseMapper<TUser> {
      * @return
      */
     TUser selectByUserId(Integer userId);
+
+    TUser selectByemail(String email);
 }
