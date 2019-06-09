@@ -17,6 +17,7 @@
         <result column="integralId" property="integralId" />
         <result column="role" property="role" />
         <result column="image" property="image" />
+        <result column="flagTime" property="flagTime" />
     </resultMap>
 
 </mapper>

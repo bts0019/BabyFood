@@ -1,4 +1,4 @@
-package com.qfedu.babyfood.comtroller;
+package com.qfedu.babyfood.controller;
 
 
 import com.qfedu.babyfood.service.TExperienceService;
