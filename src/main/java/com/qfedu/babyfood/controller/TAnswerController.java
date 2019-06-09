@@ -25,7 +25,7 @@ public class TAnswerController {
      * @param map
      * @return
      */
-    @RequestMapping(value = "index", method = RequestMethod.GET)
+    @RequestMapping(value = "index.do", method = RequestMethod.GET)
     public String index(HashMap<String, Object> map){
         map.put("hello", "么么么");
         return "index";
