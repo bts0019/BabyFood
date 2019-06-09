@@ -31,13 +31,13 @@ public class TExperienceController {
     @ApiOperation(value = "查询所有产品试用心得", notes = "查询所有产品试用心得")
     @RequestMapping("/queryExperienceByTypeName.do")
     public R queryExperienceByTypeName(String typeName){
-        return R.setOk("OK", tExperienceService.queryExperienceByTypeName(typeName));
+        return R.setOK("OK", tExperienceService.queryExperienceByTypeName(typeName));
     }
 
     @ApiOperation(value = "查询单个产品试用心得", notes = "查询单个产品试用心得")
     @RequestMapping("/queryExperienceByProductId.do")
     public R queryExperienceByProductId(int productId){
-        return R.setOk("OK", tExperienceService.queryExperienceByProductId(productId));
+        return R.setOK("OK", tExperienceService.queryExperienceByProductId(productId));
     }
 
 }

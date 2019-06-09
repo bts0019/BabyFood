@@ -6,9 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@MapperScan("com.qfedu.babyfood.dao") //扫描Mybatis修饰的接口所在的包
-@ImportResource(locations={"classpath:mykaptcha.xml"})
+
 @SpringBootApplication
+@ImportResource(locations={"classpath:mykaptcha.xml"})
+@MapperScan("com.qfedu.babyfood.dao") //扫描Mybatis修饰的接口所在的包
 @EnableSwagger2 //启用Swagger
 public class BabyfoodApplication {
 

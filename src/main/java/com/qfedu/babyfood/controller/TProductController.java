@@ -34,21 +34,21 @@ public class TProductController {
     @RequestMapping("/queryByTypeName.do")
     @CrossOrigin
     public R queryAllByTypeName(String typeName){
-        return R.setOk("OK", tProductService.queryAllByTypeName(typeName));
+        return R.setOK("OK", tProductService.queryAllByTypeName(typeName));
     }
 
     @ApiOperation(value = "查询指定id产品详细信息", notes = "查询指定id产品详细信息")
     @RequestMapping("/queryByProductId.do")
     @CrossOrigin
     public R queryByProductId(int productId){
-        return  R.setOk("OK", tProductService.queryByProductId(productId));
+        return  R.setOK("OK", tProductService.queryByProductId(productId));
     }
 
     @ApiOperation(value = "查询试用产品信息", notes = "查询试用产品信息")
     @RequestMapping("/queryByStatusAndTypeName.do")
     @CrossOrigin
     public R queryProductByStatusAndTypeName(int status, String typeName){
-        return R.setOk("OK", tProductService.queryProductByStatusAndTypeName(status, typeName));
+        return R.setOK("OK", tProductService.queryProductByStatusAndTypeName(status, typeName));
     }
 
 
