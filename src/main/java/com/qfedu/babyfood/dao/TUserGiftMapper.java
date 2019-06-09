@@ -13,4 +13,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface TUserGiftMapper extends BaseMapper<TUserGift> {
 
+    /**
+     * 添加用户和兑换的积分信息表
+     * @param tUserGift
+     */
+    void inertUserGift(TUserGift tUserGift);
 }

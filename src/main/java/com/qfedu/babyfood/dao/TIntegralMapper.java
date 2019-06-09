@@ -22,5 +22,12 @@ public interface TIntegralMapper extends BaseMapper<TIntegral> {
      */
     void updateIntegralByUserId(@Param("userId") Integer userId, @Param("integral") Integer intrgral);
 
+    /**
+     * 通过连表获取用户的积分信息表的信息
+     * @param userId
+     * @return
+     */
+    TIntegral selectByUserID(Integer userId);
+
 
 }

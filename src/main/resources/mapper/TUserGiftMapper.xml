@@ -7,7 +7,11 @@
         <id column="user_giftId" property="userGiftid" />
         <result column="giftId" property="giftId" />
         <result column="userId" property="userId" />
-        <result column="createTime" property="createTime" />
+            <result column="createTime" property="createTime" />
     </resultMap>
 
+    <insert id="inertUserGift" parameterType="com.qfedu.babyfood.entity.TUserGift">
+        insert into t_user_gift(giftId, userId ,createTime)
+        values(#{giftId}, #{userId}, #{createTime})
+    </insert>
 </mapper>

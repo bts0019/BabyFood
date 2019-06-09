@@ -2,7 +2,6 @@ package com.qfedu.babyfood.vo;
 
 import lombok.Data;
 
-@Data
 public class R {
     private int code;
     private String msg;

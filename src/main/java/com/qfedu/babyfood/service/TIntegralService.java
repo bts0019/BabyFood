@@ -1,5 +1,6 @@
 package com.qfedu.babyfood.service;
 
+import com.qfedu.babyfood.entity.TGift;
 import com.qfedu.babyfood.entity.TIntegral;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -32,4 +33,16 @@ public interface TIntegralService extends IService<TIntegral> {
      */
     void getIntegralByRealCode(Integer userId, String checkCode, String userCheckCode, String realCode) throws Exception;
 
+    /**
+     * 积分兑换 对相应的积分进行操作
+     * @param tGift 兑换的礼品
+     * @param userId    兑换商品的用户的id
+     */
+    void getChangeIntegral(TGift tGift, Integer userId) throws Exception;
+
+    /**
+     * 添加积分问题
+     * @param question 问题
+     */
+    void addIntegralQuestion(String question, Integer userId);
 }
