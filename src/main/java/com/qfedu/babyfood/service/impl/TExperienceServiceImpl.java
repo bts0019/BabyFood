@@ -4,7 +4,12 @@ import com.qfedu.babyfood.entity.TExperience;
 import com.qfedu.babyfood.dao.TExperienceMapper;
 import com.qfedu.babyfood.service.TExperienceService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.qfedu.babyfood.vo.VExperience;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +22,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class TExperienceServiceImpl extends ServiceImpl<TExperienceMapper, TExperience> implements TExperienceService {
 
+    @Autowired(required = false)
+    private TExperienceMapper tExperienceDao;
+
+    // 分类查询产品试用心得
+    @Override
+    public List<VExperience> queryExperienceByTypeName(String typeName) {
+        List<VExperience> list = tExperienceDao.queryExperienceByTypeName(typeName);
+        return list;
+    }
+
+    // 查询单个产品的试用心得
+    @Override
+    public List<VExperience> queryExperienceByProductId(int productId) {
+        List<VExperience> list = tExperienceDao.queryExperienceByProductId(productId);
+        return list;
+    }
 }
