@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="/static/js/jquery-3.4.0.js"></script>
+<body>
+
+<p th:text="${hello}"></p>
+
+<script type="text/javascript">
+    $.ajax({
+        url:"tProduct/queryByTypeName.do",
+        type:"get",
+        dataType:"json",
+        success:function(data){
+            var infos = R.getData();
+            console.log(infos);
+        }
+
+
+    })
+
+
+
+</script>
+
+
+
+</body>
+</html>

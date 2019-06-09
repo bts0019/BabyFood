@@ -13,4 +13,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface TTypeMapper extends BaseMapper<TType> {
 
+    /**
+     * 添加问题类型
+     * @param typeName 类型名字
+     * @return 返回自增后的id
+     */
+    int insertType(String typeName);
+
 }

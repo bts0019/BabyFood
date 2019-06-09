@@ -59,6 +59,12 @@
             <version>1.16.20</version>
         </dependency>
 
+        <!--支持跳转,springboot推荐使用thymeleaf模板引擎-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
         <!--Swagger 在线接口文档-->
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
         <dependency>

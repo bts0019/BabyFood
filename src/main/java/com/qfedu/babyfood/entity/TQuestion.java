@@ -1,6 +1,7 @@
 package com.qfedu.babyfood.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -34,22 +35,27 @@ public class TQuestion extends Model<TQuestion> {
     /**
      * 答案
      */
+    @TableField(value = "answerId")
     private Integer answerId;
     /**
      * 类型id
      */
+    @TableField(value = "typeId")
     private Integer typeId;
     /**
      * 用户id
      */
+    @TableField(value = "userId")
     private Integer userId;
     /**
      * 创建时间
      */
+    @TableField(value = "createTime")
     private Date createTime;
     /**
      * 产品id
      */
+    @TableField(value = "productId")
     private Integer productId;
 
 
