@@ -10,4 +10,30 @@
         <result column="productId" property="productId" />
     </resultMap>
 
+    <select id="queryExperienceByTypeName" parameterType="string" resultType="com.qfedu.babyfood.vo.VExperience">
+        select p.productId, p.productImagId, p.productName, u.userId, u.userName, e.experienceId, e.experience, t.typeName from t_experience e
+        inner join t_product p
+        on e.productId=p.productId
+        inner join t_user u
+        on e.userId=u.userId
+        inner join t_product_brand_type pbt
+        on p.productId = pbt.productId
+        inner join t_type t
+        on pbt.typeId=t.typeId
+        where t.typeName = #{typeName}
+    </select>
+
+    <select id="queryExperienceByProductId" parameterType="int" resultType="com.qfedu.babyfood.vo.VExperience">
+        select p.productId, p.productImagId, p.productName, u.userId, u.userName, e.experienceId, e.experience, t.typeName from t_experience e
+        inner join t_product p
+        on e.productId=p.productId
+        inner join t_user u
+        on e.userId=u.userId
+        inner join t_product_brand_type pbt
+        on p.productId = pbt.productId
+        inner join t_type t
+        on pbt.typeId=t.typeId
+        where p.productId=#{productId}
+    </select>
+
 </mapper>

@@ -8,5 +8,11 @@
         <result column="proUrl" property="proUrl" />
         <result column="productId" property="productId" />
     </resultMap>
+    
+    <!--<resultMap id="proUrlMap" type="com.qfedu.babyfood.entity.TProductimage">-->
+        <!--<collection property="proUrl" javaType="java.util.ArrayList"-->
+                    <!--ofType="com.qfedu.babyfood.vo.VProduct"  resultMap="com.qfedu.babyfood.dao.TProductMapper.productMap1">-->
+        <!--</collection>-->
+    <!--</resultMap>-->
 
 </mapper>

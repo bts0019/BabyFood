@@ -22,6 +22,65 @@
         <result column="userId" property="userId" />
     </resultMap>
 
+    <resultMap id="productMap" type="com.qfedu.babyfood.vo.VProduct">
+        <id column="productId" property="productId" />
+        <result column="productImagId" property="productImagId" />
+        <result column="productName" property="productName" />
+        <result column="address" property="address" />
+        <result column="quality" property="quality" />
+        <result column="warnning" property="warnning" />
+        <result column="jdUrl" property="jdUrl" />
+    </resultMap>
+
+    <resultMap id="productMap1" type="com.qfedu.babyfood.vo.VProduct">
+        <id column="productId" property="productId" />
+        <result column="productImagId" property="productImagId" />
+        <result column="productName" property="productName" />
+        <result column="suitAge" property="suitAge" />
+        <result column="norms" property="norms" />
+        <result column="eatMethod" property="eatMethod" />
+        <result column="eatCapacity" property="eatCapacity" />
+        <result column="storage" property="storage" />
+        <result column="address" property="address" />
+        <result column="quality" property="quality" />
+        <result column="warnning" property="warnning" />
+        <result column="remark" property="remark" />
+        <result column="jdUrl" property="jdUrl" />
+        <collection property="proUrl" javaType="java.util.ArrayList"
+                    ofType="com.qfedu.babyfood.entity.TProductimage">
+            <result column="proUrl" property="proUrl" />
+        </collection>
+    </resultMap>
+
+    <select id="queryAllByTypeName" parameterType="string" resultMap="productMap">
+      select p.productId, p.productImagId, p.productName, p.address, p.quality, p.warnning, p.jdUrl from t_product p
+        inner join t_product_brand_type pbt
+        on p.productId=pbt.productId
+        inner join t_type t
+        on t.typeId=pbt.typeId
+        where t.typeName=#{typeName}
+    </select>
+
+    <select id="queryByProductId" parameterType="int" resultMap="productMap1">
+      select p.productId, p.productImagId, p.productName, p.suitAge, p.norms, p.eatMethod, p.eatCapacity, p.storage, p.address, p.quality, p.warnning, p.remark, p.jdUrl, pi.proUrl from t_product p
+        inner join t_productimage pi
+        on p.productId = pi.productId
+        where p.productId=#{productId}
+    </select>
+
+    <select id="queryProductByStatusAndTypeName" resultMap="productMap">
+        select * from t_product p
+        inner join t_type t
+        <where>
+            <if test="status != null">
+                and p.status = #{status}
+            </if>
+            <if test="typeName != null">
+                and t.typeName = #{typeName}
+            </if>
+        </where>
+    </select>
+
 
     <select id="selectByRealCode" parameterType="string" resultMap="BaseResultMap">
         select * from t_product where realCode = #{realCode}
