@@ -12,4 +12,12 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface TBabyMapper extends BaseMapper<TBaby> {
 
+    /**
+     *添加宝贝
+     * @param baby
+     * @return
+     * 返回添加宝贝的id
+     */
+    int insertBaby(TBaby baby);
+
 }

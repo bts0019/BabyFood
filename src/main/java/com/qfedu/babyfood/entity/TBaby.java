@@ -1,13 +1,13 @@
 package com.qfedu.babyfood.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.util.Date;
-
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -46,6 +46,7 @@ public class TBaby extends Model<TBaby> {
     /**
      * 预产期
      */
+    @TableField(value = "expectTime")
     private Date expectTime;
     /**
      * 宝宝的图片url

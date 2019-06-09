@@ -1,13 +1,13 @@
 package com.qfedu.babyfood.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.util.Date;
-
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -30,6 +30,7 @@ public class TUser extends Model<TUser> implements Serializable{
     /**
      * 用户名
      */
+    @TableField(value = "userName")
     private String userName;
     /**
      * 用户密码
@@ -38,6 +39,7 @@ public class TUser extends Model<TUser> implements Serializable{
     /**
      * 真实姓名
      */
+    @TableField(value = "realName")
     private String realName;
     /**
      * 地址
@@ -58,14 +60,17 @@ public class TUser extends Model<TUser> implements Serializable{
     /**
      * 宝宝id
      */
+    @TableField(value = "babyId")
     private Integer babyId;
     /**
      * 城市id
      */
+    @TableField(value = "cityId")
     private Integer cityId;
     /**
      * 积分id
      */
+    @TableField(value = "integralId")
     private Integer integralId;
     /**
      * 角色
@@ -78,6 +83,7 @@ public class TUser extends Model<TUser> implements Serializable{
     /**
      * 点赞判断
      */
+    @TableField(value = "flagTime")
     private Date flagTime;
 
 
