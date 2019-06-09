@@ -21,4 +21,13 @@ public interface TUserMapper extends BaseMapper<TUser> {
     TUser selectByUserId(Integer userId);
 
     TUser selectByemail(String email);
+
+    /**
+     * 根据用户名查找用户
+     * @param username
+     * @return
+     */
+    TUser selectByName(String username);
+
+
 }

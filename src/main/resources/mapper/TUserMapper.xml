@@ -55,4 +55,9 @@
         </trim>
     </insert>
 
+    <select id="selectByName" parameterType="string" resultMap="BaseResultMap">
+        select * from t_user where userName = #{username}
+    </select>
+
+
 </mapper>

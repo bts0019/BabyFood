@@ -10,10 +10,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.imageio.ImageIO;
@@ -22,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.util.UUID;
 
 /**
  * <p>
@@ -42,6 +43,15 @@ public class TUserController {
     @Autowired
     TUserService tUserService;
 
+
+   // @Value("${cbs.imagesPath}")
+    //private String theSetDir; //全局配置文件中设置的图片的路径
+
+   /* @GetMapping("/{page}")
+    public String toPate(@PathVariable("page") String page)
+    {
+        return page;
+    }*/
     /**
      * 生成验证码，并将验证码字段放到session的vrifyCode中
      * @param httpServletRequest
@@ -126,6 +136,56 @@ public class TUserController {
             httpServletRequest.getSession().setAttribute(CommonInfo.LOGIN_USER, r.getData());
         }
         return  r;
+    }
+
+    @CrossOrigin//允许跨域
+    @ApiOperation(value = "用户修改",notes = "这是一个用户修改自己信息的方法，需要参数信息是用户的信息")
+    @RequestMapping(value = "user/updateUserByUsername.do",method = RequestMethod.POST)
+    @ResponseBody
+    public R updateUserByUsername(TUser user){
+        //String username = (String) httpServletRequest.getSession().getAttribute(CommonInfo.LOGIN_USER);
+        return tUserService.updateUserByUsername(user);
+    }
+
+
+    @CrossOrigin//允许跨域
+    @ApiOperation(value = "登录用户查找",notes = "这是一个用户自己信息的方法，需要参数信息是session中的登录用户的信息")
+    @RequestMapping(value = "user/findUserByUsername.do",method = RequestMethod.POST)
+    @ResponseBody
+    public R findUserByusername(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        String username = (String) httpServletRequest.getSession().getAttribute(CommonInfo.LOGIN_USER);
+        return R.setOK("",tUserService.findUserByName(username));
+    }
+
+
+    @CrossOrigin//允许跨域
+    @ApiOperation(value = "文件上传",notes = "这是一个文件上传的方法，需要参数信息是enctype=multipart/form-data中的登录用户的信息")
+    //@RequestMapping(value = "user/findUserByUsername.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/fileUploadController.do",method = RequestMethod.POST)
+    @ResponseBody
+    public String fileUpload(MultipartFile filename, Model model,HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception
+    {
+        String parentDirPath ="F:/mypc/images/";
+                //theSetDir.substring(theSetDir.indexOf(':')+1, theSetDir.length()); //通过设置的那个字符串获得存放图片的目录路径
+        String fileName = filename.getOriginalFilename();
+
+        //根据传输的图片后缀生成随机文件名
+        fileName =UUID.randomUUID()+fileName.substring( fileName.lastIndexOf('.'),fileName.length());
+        File parentDir = new File(parentDirPath);
+        if(!parentDir.exists()) //如果那个目录不存在先创建目录
+        {
+            parentDir.mkdir();
+        }
+
+        filename.transferTo(new File(parentDirPath + fileName)); //全局配置文件中配置的目录加上文件名
+        //登录的用户名
+        String username = (String)httpServletRequest.getSession().getAttribute(CommonInfo.LOGIN_USER);
+        //将图片路径录入用户的image字段中
+        //TUser user = tUserService.findUserByName(username);
+        tUserService.uploadImage(parentDirPath+fileName,username);
+        model.addAttribute("pic_name", fileName);
+
+        return "show";
     }
 }
 

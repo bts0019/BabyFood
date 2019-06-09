@@ -52,7 +52,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     }
 
     @Override
-    public R findUserByName(String email) {
+    public R findUserByEmail(String email) {
         if (tUserMapper.selectByemail(email) != null){
             return R.setERROR("邮箱已被注册",tUserMapper.selectByemail(email));
         }else{
@@ -71,4 +71,28 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
             return R.setOK("登录成功！",user.getUserName());
         }
     }
+
+    @Override
+    public R findUserByName(String username) {
+        return R.setOK("",tUserMapper.selectByName(username));
+    }
+
+    @Override
+    public R updateUserByUsername(TUser user) {
+        TUser user1 = tUserMapper.selectByName(user.getUserName());
+        if (!user1.getPassword().equals(user.getPassword())){
+            return R.setERROR("密码错误！",user1);
+        }else{
+            tUserMapper.updateById(user);
+            return R.setOK("",tUserMapper.selectByName(user.getUserName()));
+        }
+    }
+
+    @Override
+    public R uploadImage(String imageurl, String username) {
+        TUser user = tUserMapper.selectByName(username);
+        user.setImage(imageurl);
+        return R.setOK("添加成功！",tUserMapper.updateById(user));
+    }
+
 }
