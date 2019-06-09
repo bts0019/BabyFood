@@ -1,7 +1,11 @@
 package com.qfedu.babyfood.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableName;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.io.Serializable;
 
 /**
@@ -20,6 +24,7 @@ public class TNewtype extends Model<TNewtype> {
     /**
      * 新闻类型id
      */
+    @TableId(value = "newTypeId", type = IdType.AUTO)
     private Integer newTypeId;
     /**
      * 新闻类型

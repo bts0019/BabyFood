@@ -1,7 +1,7 @@
 package com.qfedu.babyfood.service;
 
 import com.qfedu.babyfood.entity.TProduct;
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>

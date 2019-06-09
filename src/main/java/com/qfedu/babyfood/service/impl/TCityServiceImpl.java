@@ -1,6 +1,6 @@
 package com.qfedu.babyfood.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qfedu.babyfood.dao.TCityMapper;
 import com.qfedu.babyfood.entity.TCity;
 import com.qfedu.babyfood.service.TCityService;

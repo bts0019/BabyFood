@@ -22,4 +22,8 @@
         <result column="userId" property="userId" />
     </resultMap>
 
+
+    <select id="selectByRealCode" parameterType="string" resultMap="BaseResultMap">
+        select * from t_product where realCode = #{realCode}
+    </select>
 </mapper>

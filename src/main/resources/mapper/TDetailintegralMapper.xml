@@ -9,9 +9,58 @@
         <result column="source" property="source" />
         <result column="status" property="status" />
         <result column="num" property="num" />
-        <result column="createTime" property="createTime" />
+        <result column="create_time" property="createTime" />
         <result column="remark" property="remark" />
         <result column="integralId" property="integralId" />
     </resultMap>
 
+    <insert id="insertIntegral" parameterType="com.qfedu.babyfood.entity.TDetailintegral">
+        insert into t_detailintegral
+        <trim prefix="(" suffix=") " suffixOverrides=",">
+            <if test="image !=null">
+                image,
+            </if>
+            <if test="source !=null">
+                source,
+            </if>
+            <if test="status !=null">
+                status,
+            </if>
+            <if test="num !=null">
+                num,
+            </if>
+            <if test="image !=null">
+                image,
+            </if>
+            <if test="createTime !=null">
+                createTime,
+            </if>
+            <if test="integralId !=null">
+                integralId,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="image !=null">
+                #{image},
+            </if>
+            <if test="source !=null">
+                #{source},
+            </if>
+            <if test="status !=null">
+                #{status},
+            </if>
+            <if test="num !=null">
+                #{num},
+            </if>
+            <if test="image !=null">
+                #{image},
+            </if>
+            <if test="createTime !=null">
+                #{createTime},
+            </if>
+            <if test="integralId !=null">
+                #{integralId},
+            </if>
+        </trim>
+    </insert>
 </mapper>

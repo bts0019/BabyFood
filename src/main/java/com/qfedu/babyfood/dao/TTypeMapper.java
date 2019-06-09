@@ -1,7 +1,7 @@
 package com.qfedu.babyfood.dao;
 
 import com.qfedu.babyfood.entity.TType;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>

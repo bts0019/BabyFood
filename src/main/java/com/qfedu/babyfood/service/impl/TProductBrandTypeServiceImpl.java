@@ -3,7 +3,7 @@ package com.qfedu.babyfood.service.impl;
 import com.qfedu.babyfood.entity.TProductBrandType;
 import com.qfedu.babyfood.dao.TProductBrandTypeMapper;
 import com.qfedu.babyfood.service.TProductBrandTypeService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

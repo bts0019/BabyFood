@@ -10,4 +10,11 @@
         <result column="disable" property="disable" />
     </resultMap>
 
+    <update id="updateIntegralByUserId" parameterType="map">
+        update t_user u join t_integral i on u.integralId = i.integralId
+        set i.total = #{integral}
+        where u.userId = #{userId}
+    </update>
+
+
 </mapper>

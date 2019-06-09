@@ -1,7 +1,7 @@
 package com.qfedu.babyfood.dao;
 
 import com.qfedu.babyfood.entity.TUser;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
@@ -13,4 +13,10 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface TUserMapper extends BaseMapper<TUser> {
 
+    /**
+     * 通过用户id查询用户的信息
+     * @param userId 用户id
+     * @return
+     */
+    TUser selectByUserId(Integer userId);
 }

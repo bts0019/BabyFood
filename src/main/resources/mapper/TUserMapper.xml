@@ -20,4 +20,36 @@
         <result column="flagTime" property="flagTime" />
     </resultMap>
 
+    <select id="selectByUserId" parameterType="int" resultMap="BaseResultMap">
+          select * from t_user where userId = #{userId}
+    </select>
+
+    <insert id="insertIntegral" parameterType="com.qfedu.babyfood.entity.TDetailintegral">
+
+        insert into t_detailintegral values
+        <trim prefix="values(" suffix=") " suffixOverrides=",">
+            <if test="image != null">
+                image,
+            </if>
+            <if test="source != null">
+                source,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="num != null">
+                num,
+            </if>
+            <if test="createTime != null">
+                createTime,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="integralId != null">
+                integralId,
+            </if>
+        </trim>
+    </insert>
+
 </mapper>

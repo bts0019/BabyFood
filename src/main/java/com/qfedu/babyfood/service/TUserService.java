@@ -1,6 +1,6 @@
 package com.qfedu.babyfood.service;
 
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.qfedu.babyfood.entity.TUser;
 import com.qfedu.babyfood.vo.R;
 

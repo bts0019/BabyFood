@@ -1,7 +1,7 @@
 package com.qfedu.babyfood.dao;
 
 import com.qfedu.babyfood.entity.TDetailintegral;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
@@ -13,4 +13,10 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface TDetailintegralMapper extends BaseMapper<TDetailintegral> {
 
+    /**
+     * 插入积分信息
+     * @param TDetailintegral
+     */
+    void insertIntegral(TDetailintegral TDetailintegral);
+    
 }
