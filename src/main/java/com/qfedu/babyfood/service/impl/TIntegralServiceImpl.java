@@ -77,7 +77,7 @@ public class TIntegralServiceImpl extends ServiceImpl<TIntegralMapper, TIntegral
             tDetailintegral.setCreateTime(new Date());
 
 
-            tDetailintegral.setIntegralId(tUserMapper.selectByUserId(userId).getIntegralId());
+            tDetailintegral.setIntegralId(tUserMapper.selectById(userId).getIntegralId());
             tDetailintegral.setSource("防伪验证码获取");
             tDetailintegral.setNum(tProduct.getScore());
             tDetailintegral.setStatus(1);
