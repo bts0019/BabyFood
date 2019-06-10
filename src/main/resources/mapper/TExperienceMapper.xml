@@ -36,4 +36,18 @@
         where p.productId=#{productId}
     </select>
 
+    <select id="queryExperienceByUserId" resultType="com.qfedu.babyfood.vo.VExperience">
+        select p.productName, e.experience, t.typeName from t_experience e
+        inner join t_product p
+        on e.productId = p.productId
+        inner join t_product_brand_type pbt
+        on p.productId=pbt.productId
+        inner join t_type t
+        on pbt.typeId=t.typeId
+        where e.userId = #{userId}
+        <if test="typeName != null">
+            and t.typeName = #{typeName}
+        </if>
+    </select>
+
 </mapper>

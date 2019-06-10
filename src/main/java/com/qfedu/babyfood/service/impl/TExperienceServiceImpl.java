@@ -1,7 +1,9 @@
 package com.qfedu.babyfood.service.impl;
 
+import com.qfedu.babyfood.dao.TUserMapper;
 import com.qfedu.babyfood.entity.TExperience;
 import com.qfedu.babyfood.dao.TExperienceMapper;
+import com.qfedu.babyfood.entity.TUser;
 import com.qfedu.babyfood.service.TExperienceService;
 
 import com.qfedu.babyfood.vo.VExperience;
@@ -26,6 +28,9 @@ public class TExperienceServiceImpl extends ServiceImpl<TExperienceMapper, TExpe
     @Autowired(required = false)
     private TExperienceMapper tExperienceDao;
 
+    @Autowired(required = false)
+    private TUserMapper tUserDao;
+
     // 分类查询产品试用心得
     @Override
     public List<VExperience> queryExperienceByTypeName(String typeName) {
@@ -37,6 +42,13 @@ public class TExperienceServiceImpl extends ServiceImpl<TExperienceMapper, TExpe
     @Override
     public List<VExperience> queryExperienceByProductId(int productId) {
         List<VExperience> list = tExperienceDao.queryExperienceByProductId(productId);
+        return list;
+    }
+
+    @Override
+    public List<VExperience> queryExperienceByUserId(String typeName, String userName) {
+        TUser tUser = tUserDao.selectByName(userName);
+        List<VExperience> list = tExperienceDao.queryExperienceByUserId(tUser.getUserId(), typeName);
         return list;
     }
 }

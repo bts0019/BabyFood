@@ -1,6 +1,7 @@
 package com.qfedu.babyfood.controller;
 
 
+import com.qfedu.babyfood.common.CommonInfo;
 import com.qfedu.babyfood.service.TExperienceService;
 import com.qfedu.babyfood.vo.R;
 import io.swagger.annotations.Api;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * <p>
@@ -42,6 +46,16 @@ public class TExperienceController {
     @CrossOrigin
     public R queryExperienceByProductId(int productId){
         return R.setOK("OK", tExperienceService.queryExperienceByProductId(productId));
+    }
+
+
+    @ApiOperation(value = "查询个人申请产品的试用心得", notes = "查询个人申请产品的试用心得")
+    @RequestMapping(value = "/queryExperienceByUserId.do", method = RequestMethod.GET)
+    @CrossOrigin
+    public R queryExperienceByUserId(String typeName, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String userName = (String) session.getAttribute(CommonInfo.LOGIN_USER);
+        return R.setOK("OK", tExperienceService.queryExperienceByUserId(typeName, userName));
     }
 
 }

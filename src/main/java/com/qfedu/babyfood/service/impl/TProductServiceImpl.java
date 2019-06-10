@@ -60,15 +60,16 @@ public class TProductServiceImpl extends ServiceImpl<TProductMapper, TProduct> i
      * @param tApply
      */
     @Override
-    public void tryApply(TApply tApply) {
-
-        tApply.setUserId(1);
+    public void tryApply(TApply tApply, String userName) {
+        TUser tUser = tUserDao.selectByName(userName);
+        tApply.setUserId(tUser.getUserId());
         tProductDao.tryApply(tApply);
     }
 
     @Override
-    public List<VApplyProduct> queryApplyProductByUserId(int userId) {
-        List<VApplyProduct> list = tProductDao.queryApplyProductByUserId(userId);
+    public List<VApplyProduct> queryApplyProductByUserId(String userName) {
+        TUser tUser = tUserDao.selectByName(userName);
+        List<VApplyProduct> list = tProductDao.queryApplyProductByUserId(tUser.getUserId());
         return list;
     }
 }

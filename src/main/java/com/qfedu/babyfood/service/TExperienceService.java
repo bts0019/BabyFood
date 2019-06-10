@@ -23,4 +23,12 @@ public interface TExperienceService extends IService<TExperience> {
     // 查询单个产品的试用心得
     public List<VExperience> queryExperienceByProductId(int productId);
 
+    /**
+     * 查询个人使用产品的试用心得（以人群类型查询）
+     * @param userId
+     * @param typeName
+     * @return
+     */
+    public List<VExperience> queryExperienceByUserId(String typeName, String userName);
+
 }
