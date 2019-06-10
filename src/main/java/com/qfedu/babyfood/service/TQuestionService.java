@@ -2,6 +2,7 @@ package com.qfedu.babyfood.service;
 
 import com.qfedu.babyfood.entity.TQuestion;
 import com.baomidou.mybatisplus.service.IService;
+import com.qfedu.babyfood.vo.R;
 
 /**
  * <p>
@@ -13,4 +14,7 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface TQuestionService extends IService<TQuestion> {
 
+    R queryAllByTypeName(String name);
+
+    R addQuestion(TQuestion tQuestion);
 }

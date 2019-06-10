@@ -8,4 +8,8 @@
         <result column="typeName" property="typeName" />
     </resultMap>
 
+    <select id="queryAll" resultType="com.qfedu.babyfood.entity.TType">
+        select * from t_type
+    </select>
+
 </mapper>

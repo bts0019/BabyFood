@@ -4,6 +4,8 @@ import com.qfedu.babyfood.entity.TType;
 import com.qfedu.babyfood.dao.TTypeMapper;
 import com.qfedu.babyfood.service.TTypeService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.qfedu.babyfood.vo.R;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +19,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class TTypeServiceImpl extends ServiceImpl<TTypeMapper, TType> implements TTypeService {
 
+    @Autowired(required = false)
+    private TTypeMapper tTypeMapper;
+
+    @Override
+    public R queryAll() {
+        return R.setOK("OK", tTypeMapper.queryAll());
+    }
 }

@@ -10,4 +10,8 @@
         <result column="knowledgeUrl" property="knowledgeUrl" />
     </resultMap>
 
+    <select id="queryAll" resultType="com.qfedu.babyfood.entity.TKnowledge">
+        select * from t_knowledge
+    </select>
+
 </mapper>

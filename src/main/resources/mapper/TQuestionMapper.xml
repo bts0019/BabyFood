@@ -13,4 +13,19 @@
         <result column="productId" property="productId" />
     </resultMap>
 
+    <select id="queryAllByTypeName" resultType="com.qfedu.babyfood.vo.VQuestion">
+        select q.questtion,a.answer,u.userName from t_question q
+        inner join t_answer a
+        on q.answerId=a.answerId
+        inner join t_user u
+        on q.userId=u.userId
+        inner join t_type t
+        on q.typeId=t.typeId
+        where t.typeName=#{name}
+    </select>
+
+    <insert id="add" parameterType="map">
+        insert into t_question values(null, #{questtion}, null, #{typeId}, 1, #{createTime}, null)
+    </insert>
+
 </mapper>
