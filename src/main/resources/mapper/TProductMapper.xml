@@ -85,4 +85,15 @@
     <select id="selectByRealCode" parameterType="string" resultMap="BaseResultMap">
         select * from t_product where realCode = #{realCode}
     </select>
+
+    <insert id="tryApply" parameterType="com.qfedu.babyfood.entity.TApply">
+        insert into t_apply values(null, #{productId}, #{userId}, #{postAddress}, #{postCode}, #{phone}, #{remark})
+    </insert>
+
+    <select id="queryApplyProductByUserId" parameterType="int" resultType="com.qfedu.babyfood.vo.VApplyProduct">
+        select a.userId, a.applyId, a.productId, p.productImagId, a.postAddress, a.postCode, a.phone, a.remark from t_apply a
+        inner join t_product p
+        on a.productId=p.productId
+        where a.userId = #{userId}
+    </select>
 </mapper>

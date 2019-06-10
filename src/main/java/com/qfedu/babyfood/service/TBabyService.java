@@ -1,6 +1,7 @@
 package com.qfedu.babyfood.service;
 
 import com.qfedu.babyfood.entity.TBaby;
+import com.qfedu.babyfood.vo.R;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +14,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface TBabyService extends IService<TBaby> {
 
+    public R addTBaby(TBaby tBaby);
+
+    R queryAll();
+
+    R queryById(Integer id);
+
+    R updateById(Integer id);
 }

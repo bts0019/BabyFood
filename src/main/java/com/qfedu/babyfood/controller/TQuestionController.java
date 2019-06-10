@@ -1,6 +1,12 @@
 package com.qfedu.babyfood.controller;
 
 
+import com.qfedu.babyfood.entity.TQuestion;
+import com.qfedu.babyfood.service.TQuestionService;
+import com.qfedu.babyfood.vo.R;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.qfedu.babyfood.service.TQuestionService;
 import com.qfedu.babyfood.vo.R;
 import com.qfedu.babyfood.vo.VoQuestionAnswer;
@@ -10,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -61,5 +69,18 @@ public class TQuestionController {
 
     }
 
+    @ApiOperation(value = "营养知识问答", notes = "这是一个查询所有营养知识问题的方法")
+    @RequestMapping(value = "/queryAll.do", method = RequestMethod.GET)
+    @ResponseBody
+    public R queryAll(String name) {
+        return tQuestionService.queryAllByTypeName(name);
+    }
+
+    @ApiOperation(value = "提交问题", notes = "这是一个提交问题的方法")
+    @RequestMapping(value = "/add.do", method = RequestMethod.POST)
+    @ResponseBody
+    public R addTQuestion(TQuestion tQuestion) {
+        return tQuestionService.addQuestion(tQuestion);
+    }
 }
 

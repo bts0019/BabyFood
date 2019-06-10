@@ -1,6 +1,7 @@
 package com.qfedu.babyfood.service;
 
 import com.qfedu.babyfood.entity.TKnowledge;
+import com.qfedu.babyfood.vo.R;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface TKnowledgeService extends IService<TKnowledge> {
 
+    R queryAll();
 }

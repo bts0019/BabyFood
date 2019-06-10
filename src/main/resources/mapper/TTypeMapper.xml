@@ -8,6 +8,10 @@
         <result column="typeName" property="typeName" />
     </resultMap>
 
+    <select id="queryAll" resultType="com.qfedu.babyfood.entity.TType">
+        select * from t_type
+    </select>
+
 
     <insert id="insertType" parameterType="string">
         insert into t_user (typeName)

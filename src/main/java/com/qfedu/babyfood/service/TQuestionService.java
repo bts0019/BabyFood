@@ -1,6 +1,7 @@
 package com.qfedu.babyfood.service;
 
 import com.qfedu.babyfood.entity.TQuestion;
+import com.qfedu.babyfood.vo.R;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qfedu.babyfood.vo.VoQuestionAnswer;
 
@@ -16,6 +17,9 @@ import java.util.List;
  */
 public interface TQuestionService extends IService<TQuestion> {
 
+    R queryAllByTypeName(String name);
+
+    R addQuestion(TQuestion tQuestion);
     /**
      * 获取所有问题和答案用户数据
      * @return

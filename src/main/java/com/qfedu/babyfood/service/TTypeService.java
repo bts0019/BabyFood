@@ -1,6 +1,7 @@
 package com.qfedu.babyfood.service;
 
 import com.qfedu.babyfood.entity.TType;
+import com.qfedu.babyfood.vo.R;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface TTypeService extends IService<TType> {
 
+    R queryAll();
 }

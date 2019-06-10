@@ -68,4 +68,20 @@
         </trim>
     </insert>
 
+    <select id="queryAll" resultType="com.qfedu.babyfood.entity.TBaby">
+        select * from t_baby
+    </select>
+
+    <select id="queryById" parameterType="int" resultType="com.qfedu.babyfood.entity.TBaby">
+        select * from t_baby where babyId=#{babyId}
+    </select>
+
+    <update id="updateByBabyId" parameterType="com.qfedu.babyfood.entity.TBaby">
+        update t_baby set pretty=#{pretty} where babyId=#{babyId}
+    </update>
+
+    <insert id="addTBaby" parameterType="map">
+        insert into t_baby values(null, #{name}, null, null, 0, null, #{image})
+    </insert>
+
 </mapper>

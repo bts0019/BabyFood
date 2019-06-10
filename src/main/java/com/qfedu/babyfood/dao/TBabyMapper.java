@@ -1,6 +1,9 @@
 package com.qfedu.babyfood.dao;
 
 import com.qfedu.babyfood.entity.TBaby;
+
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 /**
  * <p>
@@ -20,4 +23,15 @@ public interface TBabyMapper extends BaseMapper<TBaby> {
      */
     int insertBaby(TBaby baby);
 
+    // 添加宝宝信息
+    public void addTBaby(TBaby tBaby);
+
+    // 查询所有宝宝的信息
+    public List<TBaby> queryAll();
+
+    // 通过宝宝ID查找点赞数
+    public TBaby queryById(Integer babyId);
+
+    // 通过宝宝ID修改点赞数
+    public void updateByBabyId(TBaby tBaby);
 }

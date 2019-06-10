@@ -3,6 +3,8 @@ package com.qfedu.babyfood.dao;
 import com.qfedu.babyfood.entity.TType;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -13,6 +15,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface TTypeMapper extends BaseMapper<TType> {
 
+    // 查找所有人群分类
+    public List<TType> queryAll();
     /**
      * 添加问题类型
      * @param typeName 类型名字

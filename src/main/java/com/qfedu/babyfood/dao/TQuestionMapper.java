@@ -1,6 +1,9 @@
 package com.qfedu.babyfood.dao;
 
 import com.qfedu.babyfood.entity.TQuestion;
+import com.qfedu.babyfood.vo.VQuestion;
+
+import java.util.List;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qfedu.babyfood.vo.VoQuestionAnswer;
 
@@ -30,4 +33,9 @@ public interface TQuestionMapper extends BaseMapper<TQuestion> {
     List<VoQuestionAnswer> selectAllQuestionAnswerByUserId(Integer userId);
 
 
+    // 通过人群名称来查询所有的问题列表
+    public List<VQuestion> queryAllByTypeName(String name);
+
+    // 提交新问题
+    public void add(TQuestion tQuestion);
 }
