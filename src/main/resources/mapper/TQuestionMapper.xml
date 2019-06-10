@@ -13,4 +13,16 @@
         <result column="productId" property="productId" />
     </resultMap>
 
+    <select id="selectAllQuestionAnswer" resultType="com.qfedu.babyfood.vo.VoQuestionAnswer">
+        select u.phone, u.userName, q.questtion, q.createTime, a.answer from t_user u join t_question q
+        on u.userId = q.userId join t_answer a
+        on q.answerId = a.answerId
+    </select>
+    
+    <select id="selectAllQuestionAnswerByUserId" parameterType="int" resultType="com.qfedu.babyfood.vo.VoQuestionAnswer">
+        select u.phone, u.userName, q.questtion, q.createTime, a.answer from t_user u join t_question q
+        on u.userId = q.userId join t_answer a
+        on q.answerId = a.answerId
+        where u.userId = #{userId}
+    </select>
 </mapper>

@@ -14,6 +14,30 @@
         <result column="integralId" property="integralId" />
     </resultMap>
 
+    <select id="getGainByUserID" parameterType="int" resultMap="BaseResultMap">
+         select d.* from t_integral i JOIN t_user u
+         on i.integralId = u.integralId
+         join t_detailintegral d
+         on i.integralId = d.integralId
+         where u.userId = #{userId} and d.status=1;
+    </select>
+
+    <select id="getLoseByUserID" parameterType="int" resultMap="BaseResultMap">
+         select d.* from t_integral i JOIN t_user u
+         on i.integralId = u.integralId
+         join t_detailintegral d
+         on i.integralId = d.integralId
+         where u.userId = #{userId} and d.status=0;
+    </select>
+    
+    <select id="getAllByUserID" parameterType="int" resultMap="BaseResultMap">
+         select d.* from t_integral i JOIN t_user u
+         on i.integralId = u.integralId
+         join t_detailintegral d
+         on i.integralId = d.integralId
+         where u.userId = #{userId};
+    </select>
+
     <insert id="insertIntegral" parameterType="com.qfedu.babyfood.entity.TDetailintegral">
         insert into t_detailintegral
         <trim prefix="(" suffix=") " suffixOverrides=",">

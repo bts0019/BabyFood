@@ -35,7 +35,7 @@ public interface TUserService extends IService<TUser> {
      * @param email
      * @return
      */
-    R findUserByName(String email);
+    R findUserByEmail(String email);
 
     /**
      * 用户登录
@@ -44,4 +44,26 @@ public interface TUserService extends IService<TUser> {
      * @return
      */
     R login(String email,String password);
+
+    /**
+     * 根据用户名查找用户
+     * @param username
+     * @return
+     */
+    R findUserByName(String username);
+
+    /**
+     * 根据用户名更新用户信息
+     * @param user
+     * @return
+     */
+    R updateUserByUsername(TUser user);
+
+    /**
+     * 上传图片
+     * @param imageurl
+     * @param username
+     * @return
+     */
+    R uploadImage(String imageurl,String username);
 }

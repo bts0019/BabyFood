@@ -47,6 +47,7 @@ public class TDetailintegral extends Model<TDetailintegral> {
     /**
      * 积分明创建来源
      */
+    @TableField(value = "createTime")
     private Date createTime;
     /**
      * 备注
@@ -55,6 +56,7 @@ public class TDetailintegral extends Model<TDetailintegral> {
     /**
      * 积分表
      */
+    @TableField(value = "integralId")
     private Integer integralId;
 
 

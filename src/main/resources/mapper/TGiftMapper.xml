@@ -12,4 +12,9 @@
         <result column="suitAge" property="suitAge" />
     </resultMap>
 
+    <select id="selectByUserId" parameterType="int" resultMap="BaseResultMap">
+         select g.* from t_user_gift ug join t_gift g
+         on ug.giftId = g.gift
+         where ug.userId = #{userId}
+    </select>
 </mapper>

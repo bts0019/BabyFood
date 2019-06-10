@@ -2,6 +2,7 @@ package com.qfedu.babyfood.entity;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -29,6 +30,7 @@ public class TGift extends Model<TGift> {
     /**
      * 礼品名字
      */
+    @TableField(value = "giftName")
     private String giftName;
     /**
      * 兑换所需积分
@@ -37,6 +39,7 @@ public class TGift extends Model<TGift> {
     /**
      * 已兑换数量
      */
+    @TableField(value = "offerNum")
     private Integer offerNum;
     /**
      * 库存
@@ -45,6 +48,7 @@ public class TGift extends Model<TGift> {
     /**
      * 适应人群
      */
+    @TableField(value = "suitAge")
     private String suitAge;
 
 
