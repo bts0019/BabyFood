@@ -6,9 +6,11 @@ import com.qfedu.babyfood.vo.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -29,13 +31,15 @@ public class TExperienceController {
     private TExperienceService tExperienceService;
 
     @ApiOperation(value = "查询所有产品试用心得", notes = "查询所有产品试用心得")
-    @RequestMapping("/queryExperienceByTypeName.do")
+    @RequestMapping(value = "/queryExperienceByTypeName.do", method = RequestMethod.GET)
+    @CrossOrigin
     public R queryExperienceByTypeName(String typeName){
         return R.setOK("OK", tExperienceService.queryExperienceByTypeName(typeName));
     }
 
     @ApiOperation(value = "查询单个产品试用心得", notes = "查询单个产品试用心得")
-    @RequestMapping("/queryExperienceByProductId.do")
+    @RequestMapping(value = "/queryExperienceByProductId.do", method = RequestMethod.GET)
+    @CrossOrigin
     public R queryExperienceByProductId(int productId){
         return R.setOK("OK", tExperienceService.queryExperienceByProductId(productId));
     }
