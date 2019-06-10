@@ -12,4 +12,13 @@
         select * from t_type
     </select>
 
+
+    <insert id="insertType" parameterType="string">
+        insert into t_user (typeName)
+        values (#{typeName})
+        <selectKey resultType="Integer" order="AFTER" keyProperty="typeId">
+            SELECT LAST_INSERT_ID() AS typeId
+        </selectKey>
+    </insert>
+
 </mapper>

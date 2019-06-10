@@ -1,8 +1,13 @@
 package com.qfedu.babyfood.entity;
 
 import java.util.Date;
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableName;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.io.Serializable;
 
 /**
@@ -21,6 +26,7 @@ public class TDetailintegral extends Model<TDetailintegral> {
     /**
      * 积分细节表的Id（相当于积分消费表）
      */
+    @TableId(value = "detailIntegralId", type = IdType.AUTO)
     private Integer detailIntegralId;
     /**
      * 积分细节的图片解释
@@ -41,6 +47,7 @@ public class TDetailintegral extends Model<TDetailintegral> {
     /**
      * 积分明创建来源
      */
+    @TableField(value = "createTime")
     private Date createTime;
     /**
      * 备注
@@ -49,6 +56,7 @@ public class TDetailintegral extends Model<TDetailintegral> {
     /**
      * 积分表
      */
+    @TableField(value = "integralId")
     private Integer integralId;
 
 

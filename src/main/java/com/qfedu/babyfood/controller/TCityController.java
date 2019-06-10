@@ -29,7 +29,7 @@ public class TCityController {
 
     @CrossOrigin//允许跨域
     @ApiOperation(value = "查询城市",notes = "这是一个查询城市的方法，需要参数信息是所要查询城市的上一级id，若为第一级则上一级是0")
-    @RequestMapping(value = "city/findCityByParentId",method = RequestMethod.GET)
+    @RequestMapping(value = "city/findCityByParentId.do",method = RequestMethod.GET)
     @ResponseBody
     public R selectCity(int parentId){
        // Map<String,Object> map = new HashMap<>();

@@ -1,7 +1,7 @@
 package com.qfedu.babyfood.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qfedu.babyfood.entity.TKnowledge;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;
 

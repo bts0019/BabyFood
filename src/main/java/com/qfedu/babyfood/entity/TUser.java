@@ -1,11 +1,13 @@
 package com.qfedu.babyfood.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -16,7 +18,7 @@ import java.io.Serializable;
  * @since 2019-06-06
  */
 @TableName("t_user")
-public class TUser extends Model<TUser> {
+public class TUser extends Model<TUser> implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -28,6 +30,7 @@ public class TUser extends Model<TUser> {
     /**
      * 用户名
      */
+    @TableField(value = "userName")
     private String userName;
     /**
      * 用户密码
@@ -36,6 +39,7 @@ public class TUser extends Model<TUser> {
     /**
      * 真实姓名
      */
+    @TableField(value = "realName")
     private String realName;
     /**
      * 地址
@@ -56,14 +60,17 @@ public class TUser extends Model<TUser> {
     /**
      * 宝宝id
      */
+    @TableField(value = "babyId")
     private Integer babyId;
     /**
      * 城市id
      */
+    @TableField(value = "cityId")
     private Integer cityId;
     /**
      * 积分id
      */
+    @TableField(value = "integralId")
     private Integer integralId;
     /**
      * 角色
@@ -76,6 +83,7 @@ public class TUser extends Model<TUser> {
     /**
      * 点赞判断
      */
+    @TableField(value = "flagTime")
     private Date flagTime;
 
 

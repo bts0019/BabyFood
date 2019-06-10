@@ -3,6 +3,7 @@ package com.qfedu.babyfood.service;
 import com.qfedu.babyfood.entity.TType;
 import com.baomidou.mybatisplus.service.IService;
 import com.qfedu.babyfood.vo.R;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>

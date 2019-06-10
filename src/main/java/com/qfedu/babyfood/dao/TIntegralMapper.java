@@ -1,7 +1,9 @@
 package com.qfedu.babyfood.dao;
 
+import com.qfedu.babyfood.entity.TDetailintegral;
 import com.qfedu.babyfood.entity.TIntegral;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -12,5 +14,20 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @since 2019-06-05
  */
 public interface TIntegralMapper extends BaseMapper<TIntegral> {
+
+    /**
+     * 通过用户id修改用户的积分
+     * @param userId
+     * @param intrgral
+     */
+    void updateIntegralByUserId(@Param("userId") Integer userId, @Param("integral") Integer intrgral);
+
+    /**
+     * 通过连表获取用户的积分信息表的信息
+     * @param userId
+     * @return
+     */
+    TIntegral selectByUserID(Integer userId);
+
 
 }

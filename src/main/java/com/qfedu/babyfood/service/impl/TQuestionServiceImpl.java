@@ -6,10 +6,15 @@ import com.qfedu.babyfood.service.TQuestionService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.qfedu.babyfood.vo.R;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.qfedu.babyfood.vo.VoQuestionAnswer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Date;
+
+import java.util.List;
 
 /**
  * <p>
@@ -22,6 +27,18 @@ import java.util.Date;
 @Service
 public class TQuestionServiceImpl extends ServiceImpl<TQuestionMapper, TQuestion> implements TQuestionService {
 
+    @Autowired
+    private TQuestionMapper tQuestionMapper;
+
+    @Override
+    public List<VoQuestionAnswer> getAllQuestionAnswerByUserId(Integer userId) {
+        return tQuestionMapper.selectAllQuestionAnswerByUserId(userId);
+    }
+
+    @Override
+    public List<VoQuestionAnswer> getAllQuestionAnswer() {
+        return tQuestionMapper.selectAllQuestionAnswer();
+    }
     @Autowired(required = false)
     private TQuestionMapper tQuestionMapper;
 

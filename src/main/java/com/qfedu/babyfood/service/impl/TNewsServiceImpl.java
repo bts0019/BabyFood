@@ -3,7 +3,7 @@ package com.qfedu.babyfood.service.impl;
 import com.qfedu.babyfood.entity.TNews;
 import com.qfedu.babyfood.dao.TNewsMapper;
 import com.qfedu.babyfood.service.TNewsService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

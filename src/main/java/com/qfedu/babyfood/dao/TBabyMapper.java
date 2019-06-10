@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 /**
  * <p>
  *  Mapper 接口
@@ -14,6 +15,14 @@ import java.util.List;
  * @since 2019-06-05
  */
 public interface TBabyMapper extends BaseMapper<TBaby> {
+
+    /**
+     *添加宝贝
+     * @param baby
+     * @return
+     * 返回添加宝贝的id
+     */
+    int insertBaby(TBaby baby);
 
     // 添加宝宝信息
     public void addTBaby(TBaby tBaby);

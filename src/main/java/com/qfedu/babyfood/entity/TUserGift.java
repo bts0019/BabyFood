@@ -1,10 +1,13 @@
 package com.qfedu.babyfood.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -28,14 +31,17 @@ public class TUserGift extends Model<TUserGift> {
     /**
      * 礼品id
      */
+    @TableField(value = "giftId")
     private Integer giftId;
     /**
      * 用户id
      */
+    @TableField(value = "userId")
     private Integer userId;
     /**
      * 创建时间
      */
+    @TableField(value = "createTime")
     private Date createTime;
 
 

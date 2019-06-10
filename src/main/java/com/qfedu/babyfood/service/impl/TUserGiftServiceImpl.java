@@ -3,7 +3,7 @@ package com.qfedu.babyfood.service.impl;
 import com.qfedu.babyfood.entity.TUserGift;
 import com.qfedu.babyfood.dao.TUserGiftMapper;
 import com.qfedu.babyfood.service.TUserGiftService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
