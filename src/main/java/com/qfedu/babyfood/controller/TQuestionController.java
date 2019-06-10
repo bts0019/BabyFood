@@ -34,7 +34,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/tQuestion")
 @Api(value = "问题模块", tags = "问题模块")
-@Api(value = "营养知识问答",tags = "营养知识问答")//修饰是类，表示类做什么
 public class TQuestionController {
 
     @Autowired
@@ -69,9 +68,6 @@ public class TQuestionController {
         }
 
     }
-
-    @Autowired
-    private TQuestionService tQuestionService;
 
     @ApiOperation(value = "营养知识问答", notes = "这是一个查询所有营养知识问题的方法")
     @RequestMapping(value = "/queryAll.do", method = RequestMethod.GET)

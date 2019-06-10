@@ -3,7 +3,6 @@ package com.qfedu.babyfood.service.impl;
 import com.qfedu.babyfood.entity.TQuestion;
 import com.qfedu.babyfood.dao.TQuestionMapper;
 import com.qfedu.babyfood.service.TQuestionService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.qfedu.babyfood.vo.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -27,7 +26,7 @@ import java.util.List;
 @Service
 public class TQuestionServiceImpl extends ServiceImpl<TQuestionMapper, TQuestion> implements TQuestionService {
 
-    @Autowired
+    @Autowired(required = false)
     private TQuestionMapper tQuestionMapper;
 
     @Override
@@ -39,8 +38,6 @@ public class TQuestionServiceImpl extends ServiceImpl<TQuestionMapper, TQuestion
     public List<VoQuestionAnswer> getAllQuestionAnswer() {
         return tQuestionMapper.selectAllQuestionAnswer();
     }
-    @Autowired(required = false)
-    private TQuestionMapper tQuestionMapper;
 
     @Override
     public R queryAllByTypeName(String name) {

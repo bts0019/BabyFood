@@ -1,7 +1,6 @@
 package com.qfedu.babyfood.dao;
 
 import com.qfedu.babyfood.entity.TQuestion;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.qfedu.babyfood.vo.VQuestion;
 
 import java.util.List;
