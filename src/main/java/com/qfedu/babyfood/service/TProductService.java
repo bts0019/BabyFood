@@ -1,8 +1,10 @@
 package com.qfedu.babyfood.service;
 
+import com.qfedu.babyfood.entity.TApply;
 import com.qfedu.babyfood.entity.TProduct;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import com.qfedu.babyfood.vo.VApplyProduct;
 import com.qfedu.babyfood.vo.VProduct;
 import org.apache.ibatis.annotations.Param;
 
@@ -26,5 +28,11 @@ public interface TProductService extends IService<TProduct> {
 
     // 通过状态和类型查询产品（使用状态和人群类型）
     public List<VProduct> queryProductByStatusAndTypeName(int status, String typeName);
+
+    // 个人试用申请
+    public void tryApply(TApply tApply);
+
+    // 查询个人申请使用的产品
+    public List<VApplyProduct> queryApplyProductByUserId(int userId);
 
 }

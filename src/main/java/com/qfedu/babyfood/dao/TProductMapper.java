@@ -1,7 +1,9 @@
 package com.qfedu.babyfood.dao;
 
+import com.qfedu.babyfood.entity.TApply;
 import com.qfedu.babyfood.entity.TProduct;
 
+import com.qfedu.babyfood.vo.VApplyProduct;
 import com.qfedu.babyfood.vo.VProduct;
 import org.apache.ibatis.annotations.Param;
 
@@ -35,5 +37,19 @@ public interface TProductMapper extends BaseMapper<TProduct> {
      * @return
      */
     TProduct selectByRealCode(String realCode);
+
+
+    /**
+     * 个人试用申请
+     * @param tApply
+     */
+    public void tryApply(TApply tApply);
+
+    /**
+     * 查询个人申请试用的产品
+     * @param userId
+     * @return
+     */
+    public List<VApplyProduct> queryApplyProductByUserId(int userId);
 
 }

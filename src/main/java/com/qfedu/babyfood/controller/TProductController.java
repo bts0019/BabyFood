@@ -2,6 +2,8 @@ package com.qfedu.babyfood.controller;
 
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.qfedu.babyfood.common.CommonInfo;
+import com.qfedu.babyfood.entity.TApply;
 import com.qfedu.babyfood.service.TProductService;
 import com.qfedu.babyfood.vo.R;
 import io.swagger.annotations.Api;
@@ -31,7 +33,7 @@ public class TProductController {
     private TProductService tProductService;
 
     @ApiOperation(value = "根据类型查询产品", notes = "根据类型查询产品")
-    @RequestMapping("/queryByTypeName.do")
+    @RequestMapping(value = "/queryByTypeName.do", method = RequestMethod.GET)
     @CrossOrigin
     public R queryAllByTypeName(){
         String typeName = "婴幼儿";
@@ -40,18 +42,42 @@ public class TProductController {
     }
 
     @ApiOperation(value = "查询指定id产品详细信息", notes = "查询指定id产品详细信息")
-    @RequestMapping("/queryByProductId.do")
+    @RequestMapping(value = "/queryByProductId.do", method = RequestMethod.GET)
     @CrossOrigin
     public R queryByProductId(int productId){
         return  R.setOK("OK", tProductService.queryByProductId(productId));
     }
 
     @ApiOperation(value = "查询试用产品信息", notes = "查询试用产品信息")
-    @RequestMapping("/queryByStatusAndTypeName.do")
+    @RequestMapping(value = "/queryByStatusAndTypeName.do", method = RequestMethod.GET)
     @CrossOrigin
     public R queryProductByStatusAndTypeName(int status, String typeName){
         return R.setOK("OK", tProductService.queryProductByStatusAndTypeName(status, typeName));
     }
+
+
+    @ApiOperation(value = "个人申请试用", notes = "个人申请试用")
+    @RequestMapping(value = "/tryApply.do", method = RequestMethod.GET)
+    @CrossOrigin
+    public R tryApply(TApply tApply){
+        tProductService.tryApply(tApply);
+        return R.setOK("OK", null);
+    }
+
+
+    @ApiOperation(value = "查询个人申请试用的产品", notes = "查询个人申请试用的产品")
+    @RequestMapping(value = "/queryApplyProductByUserId.do", method = RequestMethod.GET)
+    @CrossOrigin
+    public R queryApplyProductByUserId(int userId){
+        userId = 1;
+        return R.setOK("OK", tProductService.queryApplyProductByUserId(userId));
+    }
+
+
+
+
+
+
 
 
 
