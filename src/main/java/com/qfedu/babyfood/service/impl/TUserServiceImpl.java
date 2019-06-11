@@ -10,10 +10,7 @@ import com.qfedu.babyfood.vo.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p>
@@ -26,10 +23,10 @@ import java.util.Map;
 @Service
 public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements TUserService {
 
-    @Autowired
+    @Autowired(required = false)
     private TUserMapper tUserMapper;
 
-    @Autowired
+    @Autowired(required = false)
     private TBabyMapper tBabyMapper;
 
     @Override
@@ -163,6 +160,20 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         TUser user = tUserMapper.selectByName(username);
         user.setImage(imageurl);
         return R.setOK("添加成功！",tUserMapper.updateById(user));
+    }
+
+    @Override
+    public TUser selectByBabyId(Integer babyId) {
+
+        return tUserMapper.selectByBabyId(babyId);
+    }
+
+    @Override
+    public R updateFlagTimeByBabyId(TUser tUser) {
+
+        tUser.setFlagTime(new Date());
+        tUserMapper.updateFlagTime(tUser);
+        return R.setOK("OK", null);
     }
 
 }

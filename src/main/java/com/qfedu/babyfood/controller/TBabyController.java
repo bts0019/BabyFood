@@ -1,8 +1,11 @@
 package com.qfedu.babyfood.controller;
 
 
+import com.qfedu.babyfood.common.CommonInfo;
 import com.qfedu.babyfood.entity.TBaby;
+import com.qfedu.babyfood.entity.TUser;
 import com.qfedu.babyfood.service.TBabyService;
+import com.qfedu.babyfood.service.TUserService;
 import com.qfedu.babyfood.vo.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import sun.util.calendar.BaseCalendar;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -34,6 +40,9 @@ public class TBabyController {
 
     @Autowired
     private TBabyService tBabyService;
+
+    @Autowired
+    private TUserService tUserService;
 
     @ApiOperation(value = "查询全部宝宝", notes = "这是一个实现全部查询的方法")
     @RequestMapping(value = "/queryAll.do", method = RequestMethod.GET)
@@ -73,7 +82,25 @@ public class TBabyController {
     @RequestMapping(value = "/update.do", method = RequestMethod.POST)
     @ResponseBody
     public R updateById(Integer babyId) {
-        return tBabyService.updateById(babyId);
+
+        TUser tUser = tUserService.selectByBabyId(babyId);
+        Date flagTime = tUser.getFlagTime();
+        if (flagTime == null) {
+            tBabyService.updateById(babyId);
+            tUserService.updateFlagTimeByBabyId(tUser);
+            return R.setOK("OK", null);
+        } else {
+            Date newTime = new Date();
+            System.out.println((newTime.getTime() - flagTime.getTime())/(24 * 60 * 60 * 1000));
+            if ((newTime.getTime() - flagTime.getTime())/(24 * 60 * 60 * 1000) >= 1) {
+                System.out.println("kjghjgd");
+                tBabyService.updateById(babyId);
+                tUserService.updateFlagTimeByBabyId(tUser);
+                return R.setOK("OK", null);
+            } else {
+                return R.setERROR("当天只能点赞一次", null);
+            }
+        }
     }
 }
 

@@ -59,5 +59,12 @@
         select * from t_user where userName = #{username}
     </select>
 
+    <select id="selectByBabyId" parameterType="int" resultType="com.qfedu.babyfood.entity.TUser">
+        select * from t_user where babyId = #{babyId}
+    </select>
+
+    <update id="updateFlagTime" parameterType="com.qfedu.babyfood.entity.TUser">
+        update t_user set flagTime=#{flagTime} where babyId=#{babyId}
+    </update>
 
 </mapper>
