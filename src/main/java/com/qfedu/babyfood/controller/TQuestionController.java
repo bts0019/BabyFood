@@ -13,11 +13,9 @@ import com.qfedu.babyfood.vo.VoQuestionAnswer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,6 +37,7 @@ public class TQuestionController {
     @Autowired
     private TQuestionService tQuestionService;
 
+    @CrossOrigin
     @RequestMapping(value = "/getAllIntegralQuestion.do", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "积分问题查询", notes = "查询积分模块的问题和答案")
@@ -54,6 +53,7 @@ public class TQuestionController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/getAllIntegralQuestionByUserId.do", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "积分问题查询", notes = "查询积分模块的问题和答案")
@@ -69,6 +69,7 @@ public class TQuestionController {
 
     }
 
+    @CrossOrigin
     @ApiOperation(value = "营养知识问答", notes = "这是一个查询所有营养知识问题的方法")
     @RequestMapping(value = "/queryAll.do", method = RequestMethod.GET)
     @ResponseBody
@@ -76,6 +77,7 @@ public class TQuestionController {
         return tQuestionService.queryAllByTypeName(name);
     }
 
+    @CrossOrigin
     @ApiOperation(value = "提交问题", notes = "这是一个提交问题的方法")
     @RequestMapping(value = "/add.do", method = RequestMethod.POST)
     @ResponseBody

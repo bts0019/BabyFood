@@ -44,6 +44,7 @@ public class TBabyController {
     @ApiOperation(value = "查询全部宝宝", notes = "这是一个实现全部查询的方法")
     @RequestMapping(value = "/queryAll.do", method = RequestMethod.GET)
     @ResponseBody
+    @CrossOrigin
     public R queryAll() {
         return tBabyService.queryAll();
     }
@@ -51,6 +52,7 @@ public class TBabyController {
     @ApiOperation(value = "上传宝宝照片", notes = "这是一个实现上传宝宝照片的方法")
     @RequestMapping(value = "/add.do", method = RequestMethod.POST)
     @ResponseBody
+    @CrossOrigin
     public R addTBaby(MultipartFile upfile, TBaby tBaby) {
 
         if (!upfile.isEmpty()) {
@@ -78,6 +80,7 @@ public class TBabyController {
     @ApiOperation(value = "点赞", notes = "这是一个实现点赞的方法")
     @RequestMapping(value = "/update.do", method = RequestMethod.POST)
     @ResponseBody
+    @CrossOrigin
     public R updateById(Integer babyId) {
 
         TUser tUser = tUserService.selectByBabyId(babyId);

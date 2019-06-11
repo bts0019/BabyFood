@@ -38,7 +38,7 @@ public class TBaby extends Model<TBaby> {
     /**
      * 宝宝的年龄
      */
-    private Integer age;
+    private String age;
     /**
      * 宝宝的性别
      */
@@ -82,11 +82,11 @@ public class TBaby extends Model<TBaby> {
         this.birth = birth;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
