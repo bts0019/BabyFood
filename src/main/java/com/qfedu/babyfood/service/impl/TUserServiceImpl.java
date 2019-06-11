@@ -10,6 +10,11 @@ import com.qfedu.babyfood.vo.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  *  服务实现类
@@ -28,11 +33,63 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     private TBabyMapper tBabyMapper;
 
     @Override
-    public R checkCode(String myCode, String userCode,String userLogin) {
-        if(myCode.equalsIgnoreCase(userCode)){
-            return R.setOK("",userLogin);
+    public R checkEmail(String myCode, String userCode,String userLogin) {
+        List<TUser> user =  new ArrayList<TUser>();
+        Map<String,Object> map =  new HashMap<>();
+        map.put("email",userLogin);
+        user =  tUserMapper.selectByMap(map);
+        if (!user.isEmpty() ){
+            return R.setERROR("用户邮箱已经被注册！",null);
+        }
+        R r = checkCode(myCode,userCode);
+        if (r.getCode() ==1){
+            return R.setOK("",null);
         }else {
             return R.setERROR("验证码错误！",null);
+        }
+    }
+
+    @Override
+    public R checkPhone(String myCode, String userCode, String userLogin, String code,String smscode) {
+        List<TUser> user =  new ArrayList<TUser>();
+        Map<String,Object> map =  new HashMap<>();
+        R r = checkCode(myCode,userCode);
+        map.put("phone",userLogin);
+        user =  tUserMapper.selectByMap(map);
+        if (!user.isEmpty() ){
+            return R.setERROR("用户手机号已经被注册！",null);
+        }
+        if (r.getCode() !=1){
+            return R.setERROR("验证码错误！",null);
+        }
+        if (!smscode.equals(code)){
+            return R.setERROR("手机验证码输入错误！",null);
+        }
+        return R.setOK();
+    }
+
+    @Override
+    public R registerByPhone(String myCode, String userCode, String userLogin, String code, String smscode) {
+        R r = new R();
+        r = checkPhone( myCode,userCode, userLogin, code,smscode);
+        TUser user = new TUser();
+        user.setPhone(userLogin);
+        user.setStatus(0);
+        if (r.getCode()==1){
+            return addUser(user,null);
+        }else if (r.getMsg().equals("用户手机号已经被注册！")){
+            return R.setOK();
+        }else {
+            return R.setERROR("登录失败！",null);
+        }
+    }
+
+    @Override
+    public R checkCode(String myCode, String userCode) {
+        if(myCode.equalsIgnoreCase(userCode)){
+            return R.setOK("",true);
+        }else {
+            return R.setERROR("验证码错误！",false);
         }
     }
 
@@ -61,14 +118,27 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     }
 
     @Override
-    public R login(String email, String password) {
-        TUser user = tUserMapper.selectByemail(email);
-        if (user == null){
+    public R login(String userlogin, String password) {
+        List<TUser> user =  new ArrayList<TUser>();
+        Map<String,Object> map =  new HashMap<>();
+        if(userlogin.endsWith(".com")){
+            map.put("email",userlogin);
+        }else if(userlogin.length()==11){
+            map.put("phone",userlogin);
+        }else {
+            map.put("userName",userlogin);
+        }
+        user =  tUserMapper.selectByMap(map);
+        if (userlogin.endsWith(".com")&& user.isEmpty() ){
             return R.setERROR("用户邮箱不存在！",null);
-        }else if(!user.getPassword().equals(password)) {
+        }else if(userlogin.length()==11 &&user.isEmpty() ){
+            return R.setERROR("用户手机号不存在！请注册",null);
+        }else if(user.isEmpty()){
+            return R.setERROR("用户名不存在！请注册",null);
+        }else if(!user.get(0).getPassword().equals(password)) {
             return R.setERROR("密码错误！",null);
         }else {
-            return R.setOK("登录成功！",user.getUserName());
+            return R.setOK("登录成功！",user.get(0).getUserName());
         }
     }
 

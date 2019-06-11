@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 /**
@@ -59,8 +61,11 @@ public class TProductController {
     @ApiOperation(value = "个人申请试用", notes = "个人申请试用")
     @RequestMapping(value = "/tryApply.do", method = RequestMethod.GET)
     @CrossOrigin
-    public R tryApply(TApply tApply){
-        tProductService.tryApply(tApply);
+    public R tryApply(TApply tApply, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String userName = (String) session.getAttribute(CommonInfo.LOGIN_USER);
+
+        tProductService.tryApply(tApply, userName);
         return R.setOK("OK", null);
     }
 
@@ -68,9 +73,10 @@ public class TProductController {
     @ApiOperation(value = "查询个人申请试用的产品", notes = "查询个人申请试用的产品")
     @RequestMapping(value = "/queryApplyProductByUserId.do", method = RequestMethod.GET)
     @CrossOrigin
-    public R queryApplyProductByUserId(int userId){
-        userId = 1;
-        return R.setOK("OK", tProductService.queryApplyProductByUserId(userId));
+    public R queryApplyProductByUserId(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String userName = (String) session.getAttribute(CommonInfo.LOGIN_USER);
+        return R.setOK("OK", tProductService.queryApplyProductByUserId(userName));
     }
 
 

@@ -15,13 +15,41 @@ import com.qfedu.babyfood.vo.R;
  */
 public interface TUserService extends IService<TUser> {
     /**
-     * 检查用户输入验证码
+     * 通过邮箱注册检测用户邮箱以及验证码
      * @param myCode
      * @param userCode
      * @return
      */
-    R checkCode(String myCode,String userCode,String userLogin);
+    R checkEmail(String myCode,String userCode,String userLogin);
 
+    /**
+     * 通过手机号注册，检查验证码是否正确，检查用户手机号是否被注册，检查手机验证码是否正确
+     * @param myCode
+     * @param userCode
+     * @param userLogin
+     * @param code
+     * @return
+     */
+    R checkPhone(String myCode,String userCode,String userLogin,String code,String smscode);
+
+    /**
+     * 通过手机号登录并且直接注册
+     * @param myCode
+     * @param userCode
+     * @param userLogin
+     * @param code
+     * @param smscode
+     * @return
+     */
+    R registerByPhone(String myCode,String userCode,String userLogin,String code,String smscode);
+
+    /**
+     * 检查验证码是否正确
+     * @param myCode
+     * @param userCode
+     * @return
+     */
+    R checkCode(String myCode,String userCode);
     /**
      * 添加用户
      * @param user
@@ -38,19 +66,20 @@ public interface TUserService extends IService<TUser> {
     R findUserByEmail(String email);
 
     /**
-     * 用户登录
-     * @param email
-     * @param password
-     * @return
-     */
-    R login(String email,String password);
-
-    /**
      * 根据用户名查找用户
      * @param username
      * @return
      */
     R findUserByName(String username);
+
+
+    /**
+     * 用户登录
+     * @param userlogin
+     * @param password
+     * @return
+     */
+    R login(String userlogin,String password);
 
     /**
      * 根据用户名更新用户信息

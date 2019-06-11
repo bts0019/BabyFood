@@ -30,9 +30,9 @@ public interface TProductService extends IService<TProduct> {
     public List<VProduct> queryProductByStatusAndTypeName(int status, String typeName);
 
     // 个人试用申请
-    public void tryApply(TApply tApply);
+    public void tryApply(TApply tApply, String userName);
 
     // 查询个人申请使用的产品
-    public List<VApplyProduct> queryApplyProductByUserId(int userId);
+    public List<VApplyProduct> queryApplyProductByUserId(String userName);
 
 }
