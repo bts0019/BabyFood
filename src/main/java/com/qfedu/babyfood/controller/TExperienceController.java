@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  * @author jesion
  * @since 2019-06-05
  */
-@Api(value = "查询产品试用心得", tags = "查询产品试用心得")
+@Api(value = "产品试用心得", tags = "产品试用心得")
 @Controller
 @ResponseBody
 @RequestMapping("/tExperience")

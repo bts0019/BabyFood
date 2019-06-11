@@ -25,7 +25,7 @@ import java.util.HashMap;
  * @author jesion
  * @since 2019-06-05
  */
-@Api(value = "查询产品", tags = "查询产品")
+@Api(value = "产品模块", tags = "产品模块")
 @Controller
 @ResponseBody
 @RequestMapping("/tProduct")
@@ -70,7 +70,7 @@ public class TProductController {
     }
 
 
-    @ApiOperation(value = "查询个人申请试用的产品", notes = "查询个人申请试用的产品")
+    @ApiOperation(value = "个人申请试用的产品信息", notes = "个人申请试用的产品信息")
     @RequestMapping(value = "/queryApplyProductByUserId.do", method = RequestMethod.GET)
     @CrossOrigin
     public R queryApplyProductByUserId(HttpServletRequest request) {

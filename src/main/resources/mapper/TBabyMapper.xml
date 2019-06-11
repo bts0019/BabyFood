@@ -84,4 +84,11 @@
         insert into t_baby values(null, #{name}, null, null, 0, null, #{image})
     </insert>
 
+    <select id="queryBabyByUserId" parameterType="int" resultType="com.qfedu.babyfood.entity.TBaby">
+        select b.babyId, b.name, b.pretty, b.image from t_baby b
+        inner join t_user u
+        on b.babyId=u.babyId
+        where u.userId=#{userId}
+    </select>
+
 </mapper>
