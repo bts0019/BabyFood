@@ -1,5 +1,6 @@
 package com.qfedu.babyfood.service.impl;
 
+import com.qfedu.babyfood.common.CommonInfo;
 import com.qfedu.babyfood.dao.TUserMapper;
 import com.qfedu.babyfood.entity.TBaby;
 import com.qfedu.babyfood.dao.TBabyMapper;
@@ -11,6 +12,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * <p>
@@ -25,6 +30,9 @@ public class TBabyServiceImpl extends ServiceImpl<TBabyMapper, TBaby> implements
 
     @Autowired(required = false)
     private TBabyMapper tBabyMapper;
+
+    @Autowired(required = false)
+    private TUserMapper tUserDao;
 
     @Override
     public R addTBaby(TBaby tBaby) {
@@ -53,5 +61,12 @@ public class TBabyServiceImpl extends ServiceImpl<TBabyMapper, TBaby> implements
         tBaby.setPretty(tBaby.getPretty() + 1);
         tBabyMapper.updateByBabyId(tBaby);
         return R.setOK("OK", null);
+    }
+
+    @Override
+    public List<TBaby> queryBabyByUserId(String userName) {
+        TUser tUser = tUserDao.selectByName(userName);
+        List<TBaby> list = tBabyMapper.queryBabyByUserId(tUser.getUserId());
+        return list;
     }
 }

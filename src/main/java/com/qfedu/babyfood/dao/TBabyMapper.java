@@ -35,5 +35,6 @@ public interface TBabyMapper extends BaseMapper<TBaby> {
     // 通过宝宝ID修改点赞数
     public void updateByBabyId(TBaby tBaby);
 
-
+    // 查询个人宝宝及点赞信息
+    public List<TBaby> queryBabyByUserId(int userId);
 }

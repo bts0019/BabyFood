@@ -10,16 +10,13 @@ import com.qfedu.babyfood.vo.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import sun.util.calendar.BaseCalendar;
 
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -101,6 +98,18 @@ public class TBabyController {
                 return R.setERROR("当天只能点赞一次", null);
             }
         }
+    }
+
+
+    @ApiOperation(value = "个人宝宝及点赞信息展示", notes = "个人宝宝及点赞信息展示")
+    @RequestMapping(value = "/queryBabyByUserId.do", method = RequestMethod.GET)
+    @ResponseBody
+    @CrossOrigin
+    public R queryBabyByUserId(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String userName = (String) session.getAttribute(CommonInfo.LOGIN_USER);
+
+        return R.setOK("OK", tBabyService.queryBabyByUserId(userName));
     }
 }
 
