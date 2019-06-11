@@ -36,6 +36,10 @@ public class TBaby extends Model<TBaby> {
      */
     private Date birth;
     /**
+     * 宝宝的年龄
+     */
+    private Integer age;
+    /**
      * 宝宝的性别
      */
     private String gender;
@@ -76,6 +80,14 @@ public class TBaby extends Model<TBaby> {
 
     public void setBirth(Date birth) {
         this.birth = birth;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getGender() {

@@ -59,7 +59,6 @@ public class TBabyServiceImpl extends ServiceImpl<TBabyMapper, TBaby> implements
 
         TBaby tBaby = tBabyMapper.queryById(babyId);
         tBaby.setPretty(tBaby.getPretty() + 1);
-        tBaby.setExpectTime(null);
         tBabyMapper.updateByBabyId(tBaby);
         return R.setOK("OK", null);
     }
