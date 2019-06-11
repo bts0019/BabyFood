@@ -88,9 +88,7 @@ public class TBabyController {
             return R.setOK("OK", null);
         } else {
             Date newTime = new Date();
-            System.out.println((newTime.getTime() - flagTime.getTime())/(24 * 60 * 60 * 1000));
             if ((newTime.getTime() - flagTime.getTime())/(24 * 60 * 60 * 1000) >= 1) {
-                System.out.println("kjghjgd");
                 tBabyService.updateById(babyId);
                 tUserService.updateFlagTimeByBabyId(tUser);
                 return R.setOK("OK", null);
