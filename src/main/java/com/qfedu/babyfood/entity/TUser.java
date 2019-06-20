@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -84,6 +85,7 @@ public class TUser extends Model<TUser> implements Serializable{
      * 点赞判断
      */
     @TableField(value = "flagTime")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date flagTime;
 
 

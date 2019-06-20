@@ -6,7 +6,9 @@ import com.qfedu.babyfood.vo.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +33,7 @@ public class TTypeController {
     @ApiOperation(value = "查询人群分类", notes = "这是一个查询所有人群分类的方法")
     @RequestMapping(value = "/queryAll.do", method = RequestMethod.GET)
     @ResponseBody
+    @CrossOrigin
     public R queryAll() {
         return tTypeService.queryAll();
     }

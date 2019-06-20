@@ -3,7 +3,9 @@ package com.qfedu.babyfood.controller;
 
 import com.qfedu.babyfood.common.CommonInfo;
 import com.qfedu.babyfood.entity.TBaby;
+import com.qfedu.babyfood.entity.TUser;
 import com.qfedu.babyfood.service.TBabyService;
+import com.qfedu.babyfood.service.TUserService;
 import com.qfedu.babyfood.vo.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,10 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -35,9 +38,13 @@ public class TBabyController {
     @Autowired
     private TBabyService tBabyService;
 
+    @Autowired
+    private TUserService tUserService;
+
     @ApiOperation(value = "查询全部宝宝", notes = "这是一个实现全部查询的方法")
     @RequestMapping(value = "/queryAll.do", method = RequestMethod.GET)
     @ResponseBody
+    @CrossOrigin
     public R queryAll() {
         return tBabyService.queryAll();
     }
@@ -45,6 +52,7 @@ public class TBabyController {
     @ApiOperation(value = "上传宝宝照片", notes = "这是一个实现上传宝宝照片的方法")
     @RequestMapping(value = "/add.do", method = RequestMethod.POST)
     @ResponseBody
+    @CrossOrigin
     public R addTBaby(MultipartFile upfile, TBaby tBaby) {
 
         if (!upfile.isEmpty()) {
@@ -72,8 +80,25 @@ public class TBabyController {
     @ApiOperation(value = "点赞", notes = "这是一个实现点赞的方法")
     @RequestMapping(value = "/update.do", method = RequestMethod.POST)
     @ResponseBody
+    @CrossOrigin
     public R updateById(Integer babyId) {
-        return tBabyService.updateById(babyId);
+
+        TUser tUser = tUserService.selectByBabyId(babyId);
+        Date flagTime = tUser.getFlagTime();
+        if (flagTime == null) {
+            tBabyService.updateById(babyId);
+            tUserService.updateFlagTimeByBabyId(tUser);
+            return R.setOK("OK", null);
+        } else {
+            Date newTime = new Date();
+            if ((newTime.getTime() - flagTime.getTime())/(24 * 60 * 60 * 1000) >= 1) {
+                tBabyService.updateById(babyId);
+                tUserService.updateFlagTimeByBabyId(tUser);
+                return R.setOK("OK", null);
+            } else {
+                return R.setERROR("当天只能点赞一次", null);
+            }
+        }
     }
 
 

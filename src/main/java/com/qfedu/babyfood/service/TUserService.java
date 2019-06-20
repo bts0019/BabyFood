@@ -95,4 +95,13 @@ public interface TUserService extends IService<TUser> {
      * @return
      */
     R uploadImage(String imageurl,String username);
+
+    /**
+     * 查找用户上次点赞时间
+     * @param babyId
+     * @return
+     */
+    TUser selectByBabyId(Integer babyId);
+
+    R updateFlagTimeByBabyId(TUser tUser);
 }

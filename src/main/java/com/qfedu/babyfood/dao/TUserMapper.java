@@ -3,6 +3,8 @@ package com.qfedu.babyfood.dao;
 import com.qfedu.babyfood.entity.TUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.Date;
+
 /**
  * <p>
  *  Mapper 接口
@@ -29,5 +31,16 @@ public interface TUserMapper extends BaseMapper<TUser> {
      */
     TUser selectByName(String username);
 
+    /**
+     * 根据宝宝id查找点赞的时间
+     * @param babyId
+     * @return
+     */
+    TUser selectByBabyId(Integer babyId);
 
+    /**
+     * 修改用户点赞的时间
+     * @param tUser
+     */
+    void updateFlagTime(TUser tUser);
 }
