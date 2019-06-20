@@ -37,8 +37,8 @@ public class TProductController {
     @ApiOperation(value = "根据类型查询产品", notes = "根据类型查询产品")
     @RequestMapping(value = "/queryByTypeName.do", method = RequestMethod.GET)
     @CrossOrigin
-    public R queryAllByTypeName(){
-        String typeName = "婴幼儿";
+    public R queryAllByTypeName(String typeName){
+//        String typeName = "婴幼儿";
 
         return R.setOK("OK", tProductService.queryAllByTypeName(typeName));
     }
